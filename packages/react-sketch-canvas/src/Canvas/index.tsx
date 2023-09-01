@@ -49,6 +49,7 @@ export interface CanvasProps {
   svgStyle: React.CSSProperties;
   withViewBox?: boolean;
   width: string;
+  disabled?: boolean;
 }
 
 export interface CanvasRef {
@@ -78,6 +79,7 @@ export const Canvas = React.forwardRef<CanvasRef, CanvasProps>((props, ref) => {
     },
     svgStyle = {},
     withViewBox = false,
+    disabled,
   } = props;
 
   const canvasRef = React.useRef<HTMLDivElement>(null);
@@ -115,6 +117,8 @@ export const Canvas = React.forwardRef<CanvasRef, CanvasProps>((props, ref) => {
 
   const handlePointerDown = useCallback(
     (event: React.PointerEvent<HTMLDivElement>): void => {
+      if (disabled) return;
+
       // Allow only chosen pointer type
 
       if (
@@ -138,7 +142,7 @@ export const Canvas = React.forwardRef<CanvasRef, CanvasProps>((props, ref) => {
 
   const handlePointerMove = useCallback(
     (event: React.PointerEvent<HTMLDivElement>): void => {
-      if (!isDrawing) return;
+      if (!isDrawing || disabled) return;
 
       // Allow only chosen pointer type
       if (
@@ -157,6 +161,8 @@ export const Canvas = React.forwardRef<CanvasRef, CanvasProps>((props, ref) => {
 
   const handlePointerUp = useCallback(
     (event: React.PointerEvent<HTMLDivElement> | PointerEvent): void => {
+      if (disabled) return;
+
       if (event.pointerType === "mouse" && event.button !== 0) return;
 
       // Allow only chosen pointer type

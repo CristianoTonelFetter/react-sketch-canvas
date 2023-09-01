@@ -18,6 +18,11 @@
 
 - - Add option to use Windows surface pen button as eraser
   - Memoize functions to reduce re-rendering
+# [6.2.0]
+
+### Added
+
+- Added disabled option
 
 # [6.1.0]
 

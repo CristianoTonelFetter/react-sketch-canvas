@@ -16,6 +16,7 @@ export interface ReactSketchCanvasProps
   strokeColor?: string;
   strokeWidth?: number;
   withTimestamp?: boolean;
+  disabled?: boolean;
 }
 
 export interface ReactSketchCanvasRef {
@@ -57,6 +58,7 @@ export const ReactSketchCanvas = React.forwardRef<
     onStroke = (_path: CanvasPath, _isEraser: boolean): void => undefined,
     withTimestamp = false,
     withViewBox = false,
+    disabled = false,
   } = props;
 
   const svgCanvas = React.createRef<CanvasRef>();
@@ -262,6 +264,7 @@ export const ReactSketchCanvas = React.forwardRef<
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       withViewBox={withViewBox}
+      disabled={disabled}
     />
   );
 });
