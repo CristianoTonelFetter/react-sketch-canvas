@@ -38,8 +38,8 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "pnpm clean && tsup src/index.tsx --env.NODE_ENV production --onSuccess \"npm run instrument\"",
-    "ci:build": "pnpm clean && tsup src/index.tsx --env.NODE_ENV production && npm run size",
+    "build": "yarn clean && tsup src/index.tsx --env.NODE_ENV production --onSuccess \"npm run instrument\"",
+    "ci:build": "yarn clean && tsup src/index.tsx --env.NODE_ENV production && npm run size",
     "dev": "tsup src/index.tsx --env.NODE_ENV development",
     "instrument": "nyc instrument --compact=false dist dist --in-place",
     "lint": "eslint *.ts*",

@@ -1,6 +1,6 @@
 {
   "name": "@vinothpandian/react-sketch-canvas",
-  "version": "0.0.0",
+  "version": "6.2.0",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -12,18 +12,17 @@
     "lint": "turbo run lint",
     "test": "turbo run build lint test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "ci:build": "cp README.md packages/react-sketch-canvas/ && pnpm --filter react-sketch-canvas ci:build",
-    "publish-packages": "pnpm test && pnpm ci:build && changeset version && changeset publish"
+    "ci:build": "cp README.md packages/react-sketch-canvas/ && yarn workspace react-sketch-canvas ci:build",
+    "publish-packages": "yarn test && yarn ci:build && changeset version && changeset publish"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
     "prettier": "^2.8.3",
-    "turbo": "^1.7.0"
+    "turbo": "1.10.4"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "pnpm@7.18.1",
   "dependencies": {
     "@changesets/cli": "^2.26.0"
   }
