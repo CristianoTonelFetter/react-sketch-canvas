@@ -76,6 +76,7 @@ function App() {
     withTimestamp: true,
     allowOnlyPointerType: "all",
     withViewBox: false,
+    disabled: false,
   });
 
   const inputProps: Array<[keyof ReactSketchCanvasProps, "text" | "number"]> = [

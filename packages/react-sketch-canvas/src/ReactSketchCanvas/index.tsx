@@ -16,7 +16,6 @@ export interface ReactSketchCanvasProps
   strokeColor?: string;
   strokeWidth?: number;
   withTimestamp?: boolean;
-  disabled?: boolean;
 }
 
 export interface ReactSketchCanvasRef {
@@ -268,3 +267,5 @@ export const ReactSketchCanvas = React.forwardRef<
     />
   );
 });
+
+ReactSketchCanvas.displayName = 'ReactSketchCanvas';

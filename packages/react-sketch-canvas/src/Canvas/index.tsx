@@ -117,18 +117,13 @@ export const Canvas = React.forwardRef<CanvasRef, CanvasProps>((props, ref) => {
 
   const handlePointerDown = useCallback(
     (event: React.PointerEvent<HTMLDivElement>): void => {
-      if (disabled) return;
-
       // Allow only chosen pointer type
+      const isPointerTypeInvalid =
+        (allowOnlyPointerType !== "all" &&
+          event.pointerType !== allowOnlyPointerType) ||
+        (event.pointerType === "mouse" && event.button !== 0);
 
-      if (
-        allowOnlyPointerType !== "all" &&
-        event.pointerType !== allowOnlyPointerType
-      ) {
-        return;
-      }
-
-      if (event.pointerType === "mouse" && event.button !== 0) return;
+      if (isPointerTypeInvalid || disabled) return;
 
       const isEraser =
         // eslint-disable-next-line no-bitwise
@@ -137,18 +132,17 @@ export const Canvas = React.forwardRef<CanvasRef, CanvasProps>((props, ref) => {
 
       onPointerDown(point, isEraser);
     },
-    [allowOnlyPointerType, getCoordinates, onPointerDown]
+    [allowOnlyPointerType, getCoordinates, onPointerDown, disabled]
   );
 
   const handlePointerMove = useCallback(
     (event: React.PointerEvent<HTMLDivElement>): void => {
-      if (!isDrawing || disabled) return;
-
       // Allow only chosen pointer type
-      if (
+      const isPointerTypeInvalid =
         allowOnlyPointerType !== "all" &&
-        event.pointerType !== allowOnlyPointerType
-      ) {
+        event.pointerType !== allowOnlyPointerType;
+
+      if (isPointerTypeInvalid || !isDrawing || disabled) {
         return;
       }
 
@@ -156,26 +150,22 @@ export const Canvas = React.forwardRef<CanvasRef, CanvasProps>((props, ref) => {
 
       onPointerMove(point);
     },
-    [allowOnlyPointerType, getCoordinates, isDrawing, onPointerMove]
+    [allowOnlyPointerType, getCoordinates, isDrawing, onPointerMove, disabled]
   );
 
   const handlePointerUp = useCallback(
     (event: React.PointerEvent<HTMLDivElement> | PointerEvent): void => {
-      if (disabled) return;
-
-      if (event.pointerType === "mouse" && event.button !== 0) return;
-
       // Allow only chosen pointer type
-      if (
-        allowOnlyPointerType !== "all" &&
-        event.pointerType !== allowOnlyPointerType
-      ) {
-        return;
-      }
+      const isPointerTypeInvalid =
+        (event.pointerType === "mouse" && event.button !== 0) ||
+        (allowOnlyPointerType !== "all" &&
+          event.pointerType !== allowOnlyPointerType);
+
+      if (isPointerTypeInvalid || disabled) return;
 
       onPointerUp();
     },
-    [allowOnlyPointerType, onPointerUp]
+    [allowOnlyPointerType, onPointerUp, disabled]
   );
 
   /* Mouse Handlers ends */
@@ -425,3 +415,5 @@ release drawing even when point goes out of canvas */
     </div>
   );
 });
+
+Canvas.displayName = "Canvas";
