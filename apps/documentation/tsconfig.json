@@ -1,4 +1,4 @@
 {
-  "extends": "tsconfig/documentation.json",
+  "extends": "@react-sketch-canvas/tsconfig/documentation.json",
   "include": ["src"]
 }

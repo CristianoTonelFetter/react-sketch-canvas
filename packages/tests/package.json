@@ -1,5 +1,5 @@
 {
-  "name": "tests",
+  "name": "@react-sketch-canvas/tests",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -15,12 +15,12 @@
   "license": "MIT",
   "dependencies": {
     "@cypress/code-coverage": "^3.10.0",
+    "@react-sketch-canvas/component": "^7.0.0-next.2",
     "@testing-library/cypress": "^9.0.0",
     "cypress": "^12.3.0",
-    "eslint-config-custom": "workspace:*",
-    "react-sketch-canvas": "workspace:*",
     "serve": "^14.1.2",
-    "start-server-and-test": "^1.15.2",
-    "tsconfig": "workspace:*"
+    "@react-sketch-canvas/eslint-config-custom": "^0.0.0",
+    "@react-sketch-canvas/tsconfig": "^0.0.0",
+    "start-server-and-test": "^1.15.2"
   }
 }

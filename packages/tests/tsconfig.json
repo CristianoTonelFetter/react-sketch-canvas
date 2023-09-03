@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/tests.json",
+  "extends": "@react-sketch-canvas/tsconfig/tests.json",
   "include": [
     "**/*.ts"
   ]

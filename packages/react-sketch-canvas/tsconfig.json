@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/react-library.json",
+  "extends": "@react-sketch-canvas/tsconfig/react-library.json",
   "include": ["src", "src/types"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {

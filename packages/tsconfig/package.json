@@ -1,5 +1,5 @@
 {
-  "name": "tsconfig",
+  "name": "@react-sketch-canvas/tsconfig",
   "version": "0.0.0",
   "private": true,
   "files": [

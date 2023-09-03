@@ -6,7 +6,7 @@ import {
   ReactSketchCanvas,
   ReactSketchCanvasProps,
   ReactSketchCanvasRef,
-} from "react-sketch-canvas";
+} from "@react-sketch-canvas/component";
 import LogoImage from "./logo.png";
 
 type Handlers = [string, () => void, string][];
